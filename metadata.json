@@ -1,0 +1,6 @@
+{
+  "name": "Venture Atelier",
+  "description": "Studio d'élite de venture building sous le thème Moonlight. Accompagnement en stratégie de marque, identité visuelle, design et croissance digitale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
