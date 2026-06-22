@@ -79,8 +79,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <span className="text-[10px] text-zinc-600 font-mono tracking-wider block">INQUIRIES</span>
-                      <a href="mailto:hello@ventureatelier.com" className="text-sm text-zinc-200 hover:text-[#d4af37] transition-colors">
-                        hello@ventureatelier.com
+                      <a href="mailto:ventureatelier@gmail.com" className="text-sm text-zinc-200 hover:text-[#d4af37] transition-colors">
+                        ventureatelier@gmail.com
                       </a>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ export default function Contact() {
                     <div>
                       <span className="text-[10px] text-zinc-600 font-mono tracking-wider block">GLOBAL LINE</span>
                       <span className="text-sm text-zinc-200 font-mono">
-                        +33 1 72 38 49 00
+                        +229 47535360
                       </span>
                     </div>
                   </div>
