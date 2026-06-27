@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Sparkles, Menu, X, ChevronRight } from 'lucide-react';
+import { Sparkles, Menu, X, ChevronRight } from 'lucide-react';
 
 interface HeaderProps {
   logoUrl: string;
@@ -28,9 +28,10 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // UPDATED: Added "The Method" to link to the new section
   const sections = [
     { id: 'concept', label: 'Philosophy' },
-    { id: 'assistant', label: 'Architect' },
+    { id: 'method', label: 'The Method' }, // Links to the ATELIER Method
     { id: 'portfolio', label: 'Works' },
     { id: 'team', label: 'Collective' },
     { id: 'faq', label: 'Inquiries' },
@@ -41,6 +42,7 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
+      // Offset for the fixed header height
       const top = element.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -48,41 +50,32 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
 
   return (
     <header 
-      className={`sticky top-0 z-[100] transition-all duration-500 px-6 ${
+      className={`fixed top-0 inset-x-0 z-[100] transition-all duration-500 px-6 ${
         scrolled 
-          ? 'py-3 bg-[#050505]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/50' 
+          ? 'py-3 bg-[#050505]/40 backdrop-blur-2xl border-b border-white/10' 
           : 'py-6 bg-transparent border-b border-transparent'
       }`}
     >
+      {/* 
+          NOTE: The background image sent by the administrator remains visible 
+          because we use 'bg-transparent' and 'backdrop-blur'.
+      */}
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
-        {/* Elite Branding - Hidden Admin Access (Double Click) */}
+        {/* Branding / Admin Access */}
         <div 
           className="flex items-center space-x-4 cursor-pointer select-none group/brand" 
-          onClick={() => {
-            const now = Date.now();
-            const lastClick = (window as any)._lastBrandClick || 0;
-            if (now - lastClick < 650) {
-              onAdminToggle();
-              (window as any)._lastBrandClick = 0;
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              (window as any)._lastBrandClick = now;
-            }
-          }}
+          onDoubleClick={onAdminToggle}
         >
           <div className="relative">
-            {/* Ambient gold glow halo */}
-            <div className="absolute -inset-2 rounded-full bg-[#d4af37]/20 blur-xl opacity-0 group-hover/brand:opacity-100 transition-opacity duration-700" />
-            
-            <div className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border transition-all duration-500 p-0.5 flex items-center justify-center ${
-              isAdminOpen ? 'border-[#d4af37] ring-4 ring-[#d4af37]/10' : 'border-white/20 group-hover/brand:border-[#d4af37]/50'
+            <div className={`relative w-10 h-10 rounded-full overflow-hidden border transition-all duration-500 p-0.5 flex items-center justify-center ${
+              isAdminOpen ? 'border-[#d4af37] ring-4 ring-[#d4af37]/10' : 'border-white/20'
             }`}>
               {logoUrl && !imgError ? (
                 <img 
                   src={logoUrl} 
-                  alt="Venture Atelier Logo" 
-                  className="w-full h-full object-cover rounded-full filter grayscale group-hover/brand:grayscale-0 transition-all duration-700"
+                  alt="Logo" 
+                  className="w-full h-full object-cover rounded-full"
                   onError={() => setImgError(true)}
                 />
               ) : (
@@ -91,19 +84,13 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
                 </div>
               )}
             </div>
-            
-            {/* Active Status Pulse */}
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#d4af37] border-2 border-[#050505] rounded-full shadow-lg shadow-[#d4af37]/50" />
+            <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[#d4af37] border-2 border-[#050505] rounded-full" />
           </div>
 
           <div className="hidden sm:block">
-            <h1 className="font-display font-bold text-base tracking-[0.15em] text-white uppercase leading-none">
+            <h1 className="font-display font-bold text-sm tracking-[0.2em] text-white uppercase leading-none">
               Venture <span className="text-[#d4af37]">Atelier</span>
             </h1>
-            <div className="flex items-center gap-1.5 mt-1.5">
-              <span className="font-mono text-[8px] text-zinc-500 tracking-[0.3em] uppercase">Moonlight</span>
-              <Sparkles className="w-2 h-2 text-[#d4af37]/40" />
-            </div>
           </div>
         </div>
 
@@ -113,9 +100,9 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
             <button
               key={sec.id}
               onClick={() => handleScroll(sec.id)}
-              className={`px-5 py-2 rounded-full font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-500 relative cursor-pointer ${
+              className={`px-5 py-2 rounded-full font-mono text-[9px] uppercase tracking-[0.2em] transition-all duration-500 relative cursor-pointer ${
                 navActive === sec.id 
-                  ? 'text-white bg-white/10 shadow-inner' 
+                  ? 'text-white bg-white/10' 
                   : 'text-zinc-500 hover:text-zinc-200'
               }`}
             >
@@ -133,48 +120,35 @@ export default function Header({ logoUrl, onAdminToggle, isAdminOpen, navActive 
             onClick={() => handleScroll('brief')}
             className="hidden md:flex items-center gap-2 group cursor-pointer"
           >
-            <span className="font-mono text-[10px] text-zinc-400 group-hover:text-[#d4af37] uppercase tracking-[0.2em] transition-colors">Start Venture</span>
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#d4af37]/50 transition-colors">
-              <ChevronRight className="w-3 h-3 text-zinc-500 group-hover:text-[#d4af37]" />
+            <span className="font-mono text-[9px] text-zinc-400 group-hover:text-[#d4af37] uppercase tracking-[0.2em] transition-colors">Start Venture</span>
+            <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#d4af37]/50 transition-colors">
+              <ChevronRight className="w-3 h-3 text-zinc-500" />
             </div>
           </button>
 
-          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+            className="lg:hidden p-2 text-zinc-400 hover:text-white"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      <div className={`fixed inset-x-0 top-[73px] transition-all duration-500 ease-in-out lg:hidden overflow-hidden ${
-        mobileMenuOpen ? 'max-h-[100vh] opacity-100 border-b border-white/10' : 'max-h-0 opacity-0'
+      {/* Mobile Menu */}
+      <div className={`fixed inset-x-0 top-[70px] transition-all duration-500 lg:hidden overflow-hidden ${
+        mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-[#050505]/95 backdrop-blur-2xl p-6 space-y-2">
+        <div className="bg-[#050505]/95 backdrop-blur-2xl p-6 space-y-2 border-b border-white/10">
           {sections.map((sec) => (
             <button
               key={sec.id}
               onClick={() => handleScroll(sec.id)}
-              className={`w-full py-4 px-6 text-left font-mono text-xs uppercase tracking-[0.2em] rounded-xl transition-all ${
-                navActive === sec.id 
-                  ? 'text-[#d4af37] bg-[#d4af37]/5 border border-[#d4af37]/20' 
-                  : 'text-zinc-500 border border-transparent'
-              }`}
+              className="w-full py-4 text-left font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-[#d4af37]"
             >
               {sec.label}
             </button>
           ))}
-          <div className="pt-6 border-t border-white/5 mt-4">
-            <button 
-              onClick={() => handleScroll('brief')}
-              className="w-full py-4 bg-[#d4af37] text-black font-bold font-mono text-[10px] uppercase tracking-widest rounded-xl"
-            >
-              Schedule Session
-            </button>
-          </div>
         </div>
       </div>
     </header>
