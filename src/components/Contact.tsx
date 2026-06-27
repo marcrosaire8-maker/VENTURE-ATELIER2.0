@@ -6,13 +6,11 @@
 import React, { useState } from 'react';
 import { 
   Mail, 
-  Phone, 
   Calendar as CalendarIcon, 
   Clock, 
   Check, 
   Sparkles, 
   ChevronRight, 
-  MapPin,
   Globe
 } from 'lucide-react';
 
@@ -38,206 +36,216 @@ export default function Contact() {
   };
 
   return (
-    <section id="brief" className="bg-[#050505] py-16 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background Ambience */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#d4af37]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="brief" className="bg-[#050505] py-24 px-6 relative overflow-hidden transition-all duration-500">
+      {/* Background Ambience - Similar to Header blur effects */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-[#d4af37]/5 blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header Section */}
-        <div className="text-center mb-12 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#d4af37]/30 bg-[#d4af37]/5 mb-4">
-            <CalendarIcon className="w-3 h-3 text-[#d4af37]" />
-            <span className="font-mono text-[10px] text-[#d4af37] uppercase tracking-[0.2em]">Priority Booking</span>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md mb-6">
+            <Sparkles className="w-3 h-3 text-[#d4af37]" />
+            <span className="font-mono text-[9px] text-zinc-400 uppercase tracking-[0.3em]">Priority Booking</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-6xl text-white font-light leading-tight">
-            Secure your <span className="font-serif italic text-[#d4af37]">Onboarding Session.</span>
+          <h2 className="font-display text-4xl md:text-6xl text-white font-bold uppercase tracking-tight leading-tight">
+            Secure your <span className="font-serif italic font-light text-[#d4af37] capitalize">Onboarding.</span>
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto mt-4 font-light leading-relaxed">
-            Select a dedicated slot for a 45-minute clinical consultation to analyze the strategic architecture of your venture.
+          <p className="text-zinc-500 text-sm md:text-base max-w-xl mx-auto mt-6 font-light leading-relaxed tracking-wide">
+            Select a dedicated slot for a private strategic consultation to analyze the architecture of your venture.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           
           {/* Left Panel: Studio Identity */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="h-full p-8 rounded-3xl bg-zinc-900/40 backdrop-blur-xl border border-white/10 flex flex-col justify-between">
+          <div className="lg:col-span-4 group">
+            <div className="h-full p-8 rounded-3xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 flex flex-col justify-between transition-all duration-500 hover:border-white/20">
               <div>
-                <h3 className="font-display text-xl text-white font-medium uppercase tracking-wider mb-6">
-                  Venture Atelier <span className="text-[#d4af37]">HQ</span>
-                </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed font-light mb-10">
-                  Operating as a hybrid studio between Paris (Place Vendôme) and Geneva. Consultations are strictly by invitation or successful diagnostic.
+                <div className="flex items-center gap-3 mb-8">
+                    <div className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
+                    <h3 className="font-mono text-[10px] text-white uppercase tracking-[0.2em]">
+                      Venture Atelier <span className="text-[#d4af37]">HQ</span>
+                    </h3>
+                </div>
+                
+                <p className="text-zinc-500 text-xs leading-relaxed font-light mb-12">
+                  Operating between Paris and Geneva. Consultations are strictly by invitation or successful diagnostic.
                 </p>
 
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37]">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] text-zinc-600 font-mono tracking-wider block">INQUIRIES</span>
-                      <a href="mailto:ventureatelier@gmail.com" className="text-sm text-zinc-200 hover:text-[#d4af37] transition-colors">
-                        ventureatelier@gmail.com
-                      </a>
+                <div className="space-y-8">
+                  <div className="group/item cursor-pointer">
+                    <span className="text-[9px] text-zinc-600 font-mono tracking-[0.2em] block mb-2">INQUIRIES</span>
+                    <div className="flex items-center gap-3">
+                        <Mail className="w-4 h-4 text-[#d4af37]/70" />
+                        <a href="mailto:ventureatelier@gmail.com" className="text-sm text-zinc-300 group-hover/item:text-white transition-colors">
+                            ventureatelier@gmail.com
+                        </a>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37]">
-                      <Globe className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] text-zinc-600 font-mono tracking-wider block">GLOBAL LINE</span>
-                      <span className="text-sm text-zinc-200 font-mono">
-                        +229 47535360
-                      </span>
+                  <div className="group/item cursor-pointer">
+                    <span className="text-[9px] text-zinc-600 font-mono tracking-[0.2em] block mb-2">GLOBAL LINE</span>
+                    <div className="flex items-center gap-3">
+                        <Globe className="w-4 h-4 text-[#d4af37]/70" />
+                        <span className="text-sm text-zinc-300 group-hover/item:text-white transition-colors font-mono">
+                            +229 47535360
+                        </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/5">
-                <div className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase mb-2">Verified Impact</div>
-                <div className="text-2xl font-display font-medium text-white tracking-tight">
-                  1,000+ <span className="text-[#d4af37] font-serif italic text-lg">Ventures Fueled</span>
+              <div className="mt-16 pt-8 border-t border-white/5">
+                <div className="text-[10px] font-mono text-zinc-600 tracking-[0.3em] uppercase mb-4">Verification</div>
+                <div className="text-3xl font-display font-bold text-white tracking-tighter">
+                  1,000<span className="text-[#d4af37]">+</span>
                 </div>
-                <p className="text-xs text-[#d4af37]/60 italic mt-3">"Turning vision into market authority."</p>
+                <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Ventures Fueled</p>
               </div>
             </div>
           </div>
 
           {/* Right Panel: Scheduler */}
-          <div className="lg:col-span-8 p-6 sm:p-10 rounded-3xl bg-zinc-900/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
-            {!bookingConfirmed ? (
-              <div className="animate-in fade-in slide-in-from-right-4 duration-700">
-                <div className="mb-10 text-left">
-                  <h3 className="text-xl sm:text-2xl text-white font-medium mb-2 flex items-center gap-3">
-                    <Sparkles className="w-5 h-5 text-[#d4af37]" />
-                    Live Session Scheduler
-                  </h3>
-                  <p className="text-zinc-500 text-sm">Choose your preferred window for a deep-dive strategy session.</p>
-                </div>
+          <div className="lg:col-span-8 p-1 rounded-3xl bg-gradient-to-b from-white/10 to-transparent">
+            <div className="h-full p-8 md:p-12 rounded-[calc(1.5rem-1px)] bg-[#080808] backdrop-blur-3xl overflow-hidden relative">
+              {!bookingConfirmed ? (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                  <div className="mb-12">
+                    <h3 className="text-2xl text-white font-display font-bold uppercase tracking-wider mb-2">
+                      Scheduler
+                    </h3>
+                    <div className="w-12 h-0.5 bg-[#d4af37]" />
+                  </div>
 
-                {/* Day selector */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                  {availableDays.map((day) => (
-                    <button
-                      key={day.key}
-                      onClick={() => { setSelectedDay(day.label); setSelectedTime(''); }}
-                      className={`group p-4 rounded-2xl border transition-all duration-300 text-left ${
-                        selectedDay === day.label
-                          ? 'border-[#d4af37] bg-[#d4af37]/10'
-                          : 'border-white/5 bg-white/[0.02] hover:border-white/20'
-                      }`}
-                    >
-                      <span className={`text-xs block font-bold font-mono uppercase ${selectedDay === day.label ? 'text-[#d4af37]' : 'text-zinc-500'}`}>
-                        {day.label.split(',')[0]}
-                      </span>
-                      <span className="text-sm block text-zinc-200 mt-1">{day.label.split(',')[1]}</span>
-                    </button>
-                  ))}
-                </div>
-
-                {/* Time Slots */}
-                <div className="mb-10">
-                  <span className="block text-[10px] font-mono tracking-widest text-zinc-600 uppercase mb-4">
-                    Available Windows ({selectedDay})
-                  </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {activeDay?.slots.map((slot) => (
+                  {/* Day selector - Desktop style tabs */}
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {availableDays.map((day) => (
                       <button
-                        key={slot}
-                        onClick={() => setSelectedTime(slot)}
-                        className={`py-3 rounded-xl border text-xs font-mono transition-all duration-300 ${
-                          selectedTime === slot
-                            ? 'border-[#d4af37] bg-[#d4af37] text-black font-bold'
-                            : 'border-white/5 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white'
+                        key={day.key}
+                        onClick={() => { setSelectedDay(day.label); setSelectedTime(''); }}
+                        className={`px-6 py-3 rounded-full border text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-500 ${
+                          selectedDay === day.label
+                            ? 'border-[#d4af37] bg-[#d4af37]/10 text-white'
+                            : 'border-white/5 bg-white/[0.02] text-zinc-500 hover:text-zinc-200'
                         }`}
                       >
-                        {slot}
+                        {day.label}
                       </button>
                     ))}
                   </div>
-                </div>
 
-                {/* Booking Form */}
-                <form onSubmit={handleConfirmBooking} className="pt-8 border-t border-white/5 space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest ml-1">Full Name</label>
-                      <input required type="text" value={bookingName} onChange={e => setBookingName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#d4af37] outline-none transition-all placeholder:text-zinc-800" placeholder="Alexander Knight" />
+                  {/* Time Slots */}
+                  <div className="mb-12">
+                    <span className="block text-[9px] font-mono tracking-[0.3em] text-zinc-600 uppercase mb-6">
+                      Available Windows
+                    </span>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {activeDay?.slots.map((slot) => (
+                        <button
+                          key={slot}
+                          onClick={() => setSelectedTime(slot)}
+                          className={`py-4 rounded-xl border text-[10px] font-mono transition-all duration-500 ${
+                            selectedTime === slot
+                              ? 'border-[#d4af37] bg-white text-black font-bold shadow-[0_0_20px_rgba(212,175,55,0.2)]'
+                              : 'border-white/5 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white'
+                          }`}
+                        >
+                          {slot}
+                        </button>
+                      ))}
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest ml-1">Direct Email</label>
-                      <input required type="email" value={bookingEmail} onChange={e => setBookingEmail(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#d4af37] outline-none transition-all placeholder:text-zinc-800" placeholder="alex@venture.com" />
+                  </div>
+
+                  {/* Booking Form */}
+                  <form onSubmit={handleConfirmBooking} className="pt-10 border-t border-white/5 space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
+                        <input 
+                          required 
+                          type="text" 
+                          value={bookingName} 
+                          onChange={e => setBookingName(e.target.value)} 
+                          className="w-full bg-white/[0.03] border border-white/10 rounded-full px-6 py-4 text-sm text-white focus:border-[#d4af37] focus:bg-white/[0.05] outline-none transition-all placeholder:text-zinc-700" 
+                          placeholder="EX: ALEXANDER KNIGHT" 
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em] ml-1">Digital Identity</label>
+                        <input 
+                          required 
+                          type="email" 
+                          value={bookingEmail} 
+                          onChange={e => setBookingEmail(e.target.value)} 
+                          className="w-full bg-white/[0.03] border border-white/10 rounded-full px-6 py-4 text-sm text-white focus:border-[#d4af37] focus:bg-white/[0.05] outline-none transition-all placeholder:text-zinc-700" 
+                          placeholder="EMAIL@DOMAIN.COM" 
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={!selectedTime}
+                      className="w-full mt-4 py-5 bg-white text-black rounded-full font-mono text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-[#d4af37] transition-all duration-500 disabled:opacity-10 flex items-center justify-center gap-3"
+                    >
+                      Confirm Strategic Call <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                /* Success State - Premium Boarding Pass */
+                <div className="animate-in fade-in zoom-in-95 duration-1000 text-center py-12">
+                  <div className="w-20 h-20 bg-[#d4af37]/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-[#d4af37]/20">
+                    <Check className="w-8 h-8 text-[#d4af37]" />
+                  </div>
+                  
+                  <h3 className="text-3xl text-white font-display font-bold uppercase tracking-tighter mb-4">Slot Secured.</h3>
+                  <p className="text-zinc-500 max-w-xs mx-auto mb-12 text-xs font-light leading-relaxed tracking-wide">
+                    The session invitation has been dispatched to <span className="text-white">{bookingEmail}</span>.
+                  </p>
+
+                  <div className="max-w-md mx-auto relative group">
+                    <div className="absolute -inset-1 bg-[#d4af37] rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                    <div className="relative bg-[#050505] border border-white/10 rounded-2xl p-10 text-left overflow-hidden">
+                      <div className="flex justify-between items-start mb-10">
+                        <div>
+                          <div className="text-[8px] text-[#d4af37] tracking-[0.3em] mb-2 font-bold uppercase">Consultation Pass</div>
+                          <div className="text-lg text-white font-display font-bold tracking-widest uppercase">{bookingName}</div>
+                        </div>
+                        <CalendarIcon className="w-8 h-8 text-white/10" />
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-8 mb-10">
+                        <div>
+                          <span className="text-[8px] text-zinc-600 uppercase tracking-widest block mb-1">Date</span>
+                          <span className="text-xs text-zinc-200 font-mono uppercase">{selectedDay}</span>
+                        </div>
+                        <div>
+                          <span className="text-[8px] text-zinc-600 uppercase tracking-widest block mb-1">Time (GMT+2)</span>
+                          <span className="text-xs text-zinc-200 font-mono uppercase">{selectedTime}</span>
+                        </div>
+                      </div>
+
+                      <div className="pt-6 border-t border-white/5 flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+                           <span className="text-[9px] text-zinc-400 font-mono uppercase tracking-widest">Secure Link Sent</span>
+                        </div>
+                        <span className="text-[10px] text-zinc-700 font-mono">VA-SESS-2024</span>
+                      </div>
                     </div>
                   </div>
 
                   <button
-                    type="submit"
-                    disabled={!selectedTime}
-                    className="w-full py-4 bg-white text-black rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-[#d4af37] transition-all disabled:opacity-20 flex items-center justify-center gap-3 shadow-xl"
+                    onClick={() => setBookingConfirmed(false)}
+                    className="mt-12 text-[9px] font-mono text-zinc-500 hover:text-[#d4af37] transition-colors uppercase tracking-[0.3em]"
                   >
-                    Confirm Strategic Call <ChevronRight className="w-4 h-4" />
+                    Reschedule session
                   </button>
-                </form>
-              </div>
-            ) : (
-              /* Success State - "Consultation Pass" */
-              <div className="animate-in fade-in zoom-in-95 duration-1000 text-center py-6">
-                <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20 shadow-2xl shadow-green-500/10">
-                  <Check className="w-10 h-10 text-green-500" />
                 </div>
-                
-                <h3 className="text-3xl text-white font-display mb-2">Slot Secured.</h3>
-                <p className="text-zinc-500 max-w-sm mx-auto mb-10 text-sm font-light leading-relaxed">
-                  Excellent, <span className="text-white">{bookingName}</span>. Your onboarding consultation has been synchronized with our associates.
-                </p>
-
-                <div className="max-w-md mx-auto relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#d4af37] to-amber-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
-                  <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 text-left font-mono overflow-hidden">
-                    <div className="absolute top-0 right-0 p-4 opacity-10">
-                      <CalendarIcon className="w-12 h-12 text-[#d4af37]" />
-                    </div>
-                    
-                    <div className="text-[9px] text-[#d4af37] tracking-[0.2em] mb-6 font-bold uppercase">Consultation Boarding Pass</div>
-                    
-                    <div className="space-y-4 mb-8">
-                      <div className="flex items-center gap-4 text-white">
-                        <CalendarIcon className="w-5 h-5 text-[#d4af37]" />
-                        <span className="text-lg font-sans font-bold tracking-tight">{selectedDay}</span>
-                      </div>
-                      <div className="flex items-center gap-4 text-zinc-400">
-                        <Clock className="w-5 h-5 text-[#d4af37]" />
-                        <span className="text-base">{selectedTime} (GMT+2)</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-6 border-t border-white/5 flex justify-between items-end">
-                      <div>
-                        <div className="text-[8px] text-zinc-600 mb-1 uppercase tracking-widest">Digital Venue</div>
-                        <div className="text-[10px] text-zinc-200">Secure Google Meet</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-[8px] text-zinc-600 mb-1 uppercase tracking-widest">Invitee</div>
-                        <div className="text-[10px] text-zinc-200">{bookingEmail}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setBookingConfirmed(false)}
-                  className="mt-10 text-xs font-mono text-[#d4af37] hover:text-white transition-colors uppercase tracking-widest"
-                >
-                  Modify or reschedule session
-                </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
         </div>
